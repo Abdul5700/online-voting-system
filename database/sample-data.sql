@@ -1,0 +1,3 @@
+USE online_voting;
+INSERT INTO elections(title,description,start_date,end_date,status) VALUES ('Student Council Election 2026','Elect your student representatives for a better campus.','2026-07-01 09:00:00','2026-12-31 17:00:00','active');
+INSERT INTO candidates(name,branch,year,manifesto,election_id) VALUES ('Aarav Sharma','Computer Science','Final Year','Transparent student representation and better tech facilities.',1),('Meera Nair','Information Science','Final Year','A more inclusive campus, stronger clubs, and clearer feedback loops.',1),('Kabir Singh','Electronics','Third Year','Practical improvements to events, labs, and student wellbeing.',1);
