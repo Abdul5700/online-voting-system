@@ -1,9 +1,14 @@
 import axios from "axios";
 
-// One stable API URL for every environment. Vite proxies this locally and
-// Vercel rewrites it to Render in production (see vercel.json).
+// Use the local API while developing and the Render API in production.
+// Keeping this explicit avoids any Vercel rewrite or environment-variable
+// mismatch changing auth requests into same-origin 404s.
+const apiBaseUrl = import.meta.env.DEV
+  ? "http://localhost:5000/api"
+  : "https://online-voting-api-1obd.onrender.com/api";
+
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: apiBaseUrl,
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
 });
