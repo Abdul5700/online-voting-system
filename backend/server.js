@@ -26,6 +26,10 @@ app.use(morgan('dev'));
 app.use('/uploads',express.static('uploads'));
 app.get('/health',(req,res)=>res.json({status:'ok'}));
 app.use('/api',routes);
+// Backwards-compatible auth paths for a previously deployed frontend bundle.
+// New clients must use /api/*; this prevents old cached bundles from failing
+// while Vercel finishes deploying the corrected VITE_API_URL value.
+app.use('/', routes);
 app.use(notFound);
 app.use(errorHandler);
 app.listen(process.env.PORT||5000,()=>console.log(`API listening on ${process.env.PORT||5000}`));
