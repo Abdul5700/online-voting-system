@@ -10,7 +10,6 @@ const apiBaseUrl = import.meta.env.DEV
 const api = axios.create({
   baseURL: apiBaseUrl,
   withCredentials: true,
-  headers: { "Content-Type": "application/json" },
 });
 
 api.interceptors.request.use((config) => {
